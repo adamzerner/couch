@@ -1,5 +1,5 @@
 angular
-  .module('couch', ['ui.router'])
+  .module('couch', ['ui.router', 'youtube-embed'])
   .config(config)
 ;
 

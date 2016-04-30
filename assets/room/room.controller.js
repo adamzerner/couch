@@ -6,4 +6,7 @@ angular
 function RoomCtrl($stateParams) {
   var vm = this;
   vm.roomName = $stateParams.roomName;
+  vm.setVideo = function (inputUrl) {
+    vm.currentUrl = inputUrl;
+  };
 }
