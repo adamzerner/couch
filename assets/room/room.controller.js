@@ -3,19 +3,43 @@ angular
   .controller('RoomCtrl', RoomCtrl)
 ;
 
-function RoomCtrl($stateParams, Socket) {
+function RoomCtrl($stateParams, Socket, $scope) {
   var vm = this;
   vm.roomName = $stateParams.roomName;
 
   Socket.emit('joinRoom', vm.roomName);
 
+  /* set video */
   vm.setVideo = function (inputUrl) {
-    vm.currentUrl = inputUrl;
     Socket.emit('setVideoOnServer', inputUrl);
   };
 
   Socket.on('setVideoOnClient', function (inputUrl) {
-    console.log('setVideoOnClient response: ', inputUrl);
     vm.currentUrl = inputUrl;
   });
+
+  /* play video */
+  vm.playVideo = function () {
+    Socket.emit('playVideo');
+  };
+
+  Socket.on('playVideo', function () {
+    $scope.player.playVideo();
+  });
+
+  /* pause video */
+  vm.pauseVideo = function () {
+    Socket.emit('pauseVideo');
+  };
+
+  Socket.on('pauseVideo', function () {
+    $scope.player.pauseVideo();
+  });
+
+  /* on destroy */
+  vm.onDestroy = function () {
+    Socket.emit('leaveRoom', vm.roomName);
+  };
+
+  $scope.$on('$destroy', vm.onDestroy);
 }

@@ -22,6 +22,13 @@
 
 <hr />
 
+<button class="btn btn-default" ng-click="vm.playVideo()">Play Video</button>
+<button class="btn btn-default" ng-click="vm.pauseVideo()">Pause Video</button>
+
 <div class="embed-responsive embed-responsive-16by9">
-  <youtube-video class="embed-responsive-item" video-url="vm.currentUrl"></youtube-video>
+  <youtube-video
+    class="embed-responsive-item"
+    video-url="vm.currentUrl"
+    player="player"
+  ></youtube-video>
 </div>
