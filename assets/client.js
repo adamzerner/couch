@@ -1,5 +1,5 @@
 angular
-  .module('couch', ['ui.router', 'youtube-embed'])
+  .module('couch', ['ui.router', 'youtube-embed', 'btford.socket-io'])
   .config(config)
 ;
 

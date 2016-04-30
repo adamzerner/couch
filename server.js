@@ -1,5 +1,7 @@
 var express = require('express');
 var app = express();
+var server = require('http').Server(app);
+var io = require('socket.io')(server);
 var pages;
 
 app.use(express.static('assets'));
@@ -14,6 +16,14 @@ pages.forEach(function (page) {
   app.get(page, respondWithIndex);
 });
 
-app.listen(3000, function () {
-  console.log('Listening on port 3000...');
+io.sockets.on('connection', function (socket) {
+  socket.on('joinRoom', function (roomName) {
+    socket.join(roomName, function () {
+      socket.on('setVideoOnServer', function (inputUrl) {
+        io.sockets.in(roomName).emit('setVideoOnClient', inputUrl); // can't broadcast(?)
+      });
+    });
+  });
 });
+
+server.listen(8000);
