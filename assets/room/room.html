@@ -22,8 +22,24 @@
 
 <hr />
 
-<button class="btn btn-default" ng-click="vm.playVideo()">Play Video</button>
-<button class="btn btn-default" ng-click="vm.pauseVideo()">Pause Video</button>
+<p ng-if="vm.currentUrl">
+  <button
+    class="btn btn-default"
+    ng-click="vm.playVideo()"
+  >
+    Play Video <span class="glyphicon glyphicon-play"></span>
+  </button>
+
+  <button
+    class="btn btn-default"
+    ng-click="vm.pauseVideo()"
+  >
+    Pause Video <span class="glyphicon glyphicon-pause"></span>
+  </button>
+  <small class="mar-lft">
+    Note: Using these buttons will reduce the lag between you and the other watchers. Using the buttons on the player will introduce some lag.
+  </small>
+</p>
 
 <div class="embed-responsive embed-responsive-16by9">
   <youtube-video
