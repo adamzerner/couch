@@ -19,6 +19,10 @@ function RoomCtrl($stateParams, Socket, $scope) {
   });
 
   /* play video */
+  $scope.$on('youtube.player.playing', function () {
+    vm.playVideo();
+  });
+
   vm.playVideo = function () {
     Socket.emit('playVideo');
   };
@@ -28,6 +32,10 @@ function RoomCtrl($stateParams, Socket, $scope) {
   });
 
   /* pause video */
+  $scope.$on('youtube.player.paused', function () {
+    vm.pauseVideo();
+  });
+
   vm.pauseVideo = function () {
     Socket.emit('pauseVideo');
   };
