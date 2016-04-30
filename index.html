@@ -1,18 +1,26 @@
 <!doctype html>
-<html>
+<html ng-app="couch">
   <head>
     <title>Couch</title>
 
-    <!-- bootstrap -->
+    <!-- bootstrap + jquery -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
     <!-- angular -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.js"></script>
+
+    <!-- code -->
+    <script src="client.js"></script>
   </head>
   <body>
-    <div class="page-header">
-      <h1>Couch</h1>
+    <div class="container" ng-controller="MainCtrl as vm">
+      <div class="page-header">
+        <h1>Couch</h1>
+      </div>
+
+      <p>{{ vm.foo }}</p>
     </div>
   </body>
 </html>
