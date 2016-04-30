@@ -1,0 +1,20 @@
+<div class="page-header">
+  <h1>Home</h1>
+</div>
+
+<div class="form-group">
+  <label>Room Name:</label>
+  <input
+    type="text"
+    ng-model="vm.roomName"
+    class="form-control input-lg"
+  >
+</div>
+
+<button
+  type="button"
+  class="btn btn-default btn-lg btn-block"
+  ui-sref="room({ roomName: vm.roomName })"
+>
+  Create a Room
+</button>

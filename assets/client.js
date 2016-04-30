@@ -1,9 +1,9 @@
 angular
-  .module('couch', [])
-  .controller('MainCtrl', MainCtrl)
+  .module('couch', ['ui.router'])
+  .config(config)
 ;
 
-function MainCtrl() {
-  var vm = this;
-  vm.foo = 'bar';
+function config($urlRouterProvider, $locationProvider) {
+  $locationProvider.html5Mode(true);
+  $urlRouterProvider.otherwise('/home');
 }
