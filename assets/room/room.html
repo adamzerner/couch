@@ -22,24 +22,48 @@
 
 <hr />
 
-<p ng-if="vm.currentUrl">
-  <button
-    class="btn btn-default"
-    ng-click="vm.playVideo()"
-  >
-    Play Video <span class="glyphicon glyphicon-play"></span>
-  </button>
+<div ng-if="vm.currentUrl" class="mar-btm">
+  <p>
+    <button
+      class="btn btn-default"
+      ng-click="vm.playVideo()"
+    >
+      Play Video <span class="glyphicon glyphicon-play"></span>
+    </button>
 
-  <button
-    class="btn btn-default"
-    ng-click="vm.pauseVideo()"
-  >
-    Pause Video <span class="glyphicon glyphicon-pause"></span>
-  </button>
-  <small class="mar-lft">
+    <button
+      class="btn btn-default"
+      ng-click="vm.pauseVideo()"
+    >
+      Pause Video <span class="glyphicon glyphicon-pause"></span>
+    </button>
+
+    <label class="mar-lft">Skip To:</label>
+    <input
+      ng-if="vm.hourLong"
+      type="text"
+      class="form-control skip-to"
+      ng-model="vm.skipTo.hour"
+      placeholder="hour"
+    >
+    <input
+      type="text"
+      class="form-control skip-to"
+      ng-model="vm.skipTo.minute"
+      placeholder="minute"
+    >
+    <input
+      type="text"
+      class="form-control skip-to"
+      ng-model="vm.skipTo.second"
+      placeholder="second"
+    >
+    <button class="btn btn-default" ng-click="vm.skipTo.go()">Go</button>
+  </p>
+  <small>
     Note: Using these buttons will reduce the lag between you and the other watchers. Using the buttons on the player will introduce some lag.
   </small>
-</p>
+</div>
 
 <div class="embed-responsive embed-responsive-16by9">
   <youtube-video

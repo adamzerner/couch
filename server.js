@@ -33,6 +33,10 @@ io.sockets.on('connection', function (socket) {
       socket.on('pauseVideo', function () {
         io.sockets.in(roomName).emit('pauseVideo');
       });
+
+      socket.on('skipTo', function (seconds) {
+        io.sockets.in(roomName).emit('skipTo', seconds);
+      });
     });
   });
 
@@ -41,6 +45,7 @@ io.sockets.on('connection', function (socket) {
       socket.removeListener('setVideoOnServer');
       socket.removeListener('playVideo');
       socket.removeListener('pauseVideo');
+      socket.removeListener('skipTo');
     });
   });
 });

@@ -18,6 +18,10 @@ function RoomCtrl($stateParams, Socket, $scope) {
     vm.currentUrl = inputUrl;
   });
 
+  $scope.$on('youtube.player.ready', function () {
+    vm.hourLong = $scope.player.getDuration() > (60 * 60);
+  });
+
   /* play video */
   $scope.$on('youtube.player.playing', function () {
     vm.playVideo();
@@ -42,6 +46,22 @@ function RoomCtrl($stateParams, Socket, $scope) {
 
   Socket.on('pauseVideo', function () {
     $scope.player.pauseVideo();
+  });
+
+  /* skip to */
+  vm.skipTo = {
+    go: function () {
+      var hour = Number(vm.skipTo.hour) || 0;
+      var minute = Number(vm.skipTo.minute) || 0;
+      var second = Number(vm.skipTo.second) || 0;
+
+      var seconds = (hour * 60 * 60) + (minute * 60) + second;
+      Socket.emit('skipTo', seconds);
+    },
+  };
+
+  Socket.on('skipTo', function (seconds) {
+    $scope.player.seekTo(seconds);
   });
 
   /* on destroy */
