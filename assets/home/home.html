@@ -5,9 +5,12 @@
 <div class="form-group">
   <label>Room Name:</label>
   <input
+    id="room-name-input"
     type="text"
-    ng-model="vm.roomName"
     class="form-control input-lg"
+    ng-model="vm.roomName"
+    ng-focus="vm.conditionallyClearRoomName()"
+    ng-blur="vm.conditionallySetRandomRoomName()"
   >
 </div>
 
