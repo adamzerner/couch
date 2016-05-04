@@ -1,33 +1,53 @@
 <div class="page-header">
-  <h1>Home</h1>
+  <h1>
+    Couch
+    <small>Watch videos with friends. No more "1, 2, 3 - pause".</small>
+  </h1>
 </div>
 
-<div class="form-group">
-  <label>Room Name:</label>
+<div class="mar-btm">
+  <span class="font-lg gray">localhost:8000/</span>
   <input
-    id="room-name-input"
-    type="text"
-    class="form-control input-lg"
-    ng-model="vm.roomName"
-    ng-focus="vm.conditionallyClearRoomName()"
-    ng-blur="vm.conditionallySetRandomRoomName()"
+  id="room-name-input"
+  type="text"
+  class="form-control input-lg"
+  ng-model="vm.roomName"
+  ng-focus="vm.conditionallyClearRoomName()"
+  ng-blur="vm.conditionallySetRandomRoomName()"
   >
-</div>
 
-<button
+  <button
   type="button"
-  class="btn btn-default btn-lg btn-block"
+  class="btn btn-default btn-lg"
   ui-sref="room({ roomName: vm.roomName })"
->
+  >
   Create a Room
 </button>
+</div>
+
+<div class="thumbnail">
+  <img ng-src="/couch-demo.png" class="couch-demo">
+</div>
 
 <hr />
 
-<div class="how-it-works">
+<div class="font-lg mar-btm">
+  <p>Motivation:</p>
+  <ul>
+    <li>I watch YouTube videos with long distance friends while we FaceTime.</li>
+    <li>To start at the same time, we have to say, "One, two, three - start", and then click play.</li>
+    <li>If we need to pause, we have to say, "One, two, three - pause", and then click pause.</li>
+    <li>It shouldn't be this way.</li>
+    <li>With Couch, you can play/pause your friends video.</li>
+  </ul>
+</div>
+
+<br />
+
+<div class="font-lg">
   <p>How it Works:</p>
   <ol>
-    <li>Create a room (using the randomly generated word, or your own).</li>
+    <li>Create a room.</li>
     <li>Send the URL to whomever you want to watch the video with.</li>
     <li>Upload a YouTube video.</li>
     <li>Watch it! Use the controls to play/pause/skip to.</li>

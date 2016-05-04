@@ -11,6 +11,20 @@
   display: inline-block;
 }
 
-.how-it-works {
+.font-lg {
   font-size: 22px;
+}
+
+#room-name-input {
+  display: inline-block;
+  width: 300px;
+}
+
+.thumbnail {
+  margin-top: 50px;
+  width: 100%;
+}
+
+.gray {
+  color: gray;
 }

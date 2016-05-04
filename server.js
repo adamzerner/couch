@@ -42,10 +42,10 @@ io.sockets.on('connection', function (socket) {
 
   socket.on('leaveRoom', function (roomName) {
     socket.leave(roomName, function () {
-      socket.removeListener('setVideoOnServer');
-      socket.removeListener('playVideo');
-      socket.removeListener('pauseVideo');
-      socket.removeListener('skipTo');
+      // socket.removeListener('setVideoOnServer');
+      // socket.removeListener('playVideo');
+      // socket.removeListener('pauseVideo');
+      // socket.removeListener('skipTo');
     });
   });
 });
