@@ -12,7 +12,6 @@ function RoomCtrl($stateParams, Socket, $scope, $rootScope) {
     $rootScope.alert = {
       message: 'Someone joined this room.',
       type: 'info',
-      dismissOnTimeout: 2000,
     };
   });
 
