@@ -6,14 +6,31 @@ angular
 function RoomCtrl($stateParams, Socket, $scope, $rootScope) {
   var vm = this;
   vm.roomName = $stateParams.roomName;
+  vm.numberOfOtherRoomMembers = 0;
+  vm._numberOfOtherRoomMembers = function () {
+    return new Array(vm.numberOfOtherRoomMembers);
+  };
 
   Socket.emit('joinRoom', vm.roomName);
   Socket.on('joinedRoom', function () {
+    vm.numberOfOtherRoomMembers++;
+
     $rootScope.alert = {
       message: 'Someone joined this room.',
       type: 'info',
     };
   });
+
+  vm._handleLeftRoom = function () {
+    vm.numberOfOtherRoomMembers--;
+
+    $rootScope.alert = {
+      message: 'Someone left this room.',
+      type: 'info',
+    };
+  };
+
+  Socket.on('leftRoom', vm._handleLeftRoom);
 
   /* set video */
   vm.setVideo = function (inputUrl) {

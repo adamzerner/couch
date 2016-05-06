@@ -41,11 +41,16 @@ io.sockets.on('connection', function (socket) {
       socket.on('skipTo', function (seconds) {
         io.sockets.in(roomName).emit('skipTo', seconds);
       });
+
+      socket.on('disconnect', function () {
+        io.sockets.in(roomName).emit('leftRoom');
+      });
     });
   });
 
   socket.on('leaveRoom', function (roomName) {
     socket.leave(roomName, function () {
+      socket.broadcast.to(roomName).emit('leftRoom');
       socket.removeAllListeners('setVideoOnServer');
       socket.removeAllListeners('playVideo');
       socket.removeAllListeners('pauseVideo');

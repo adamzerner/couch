@@ -22,6 +22,14 @@
 
 <hr />
 
+<p>
+  Numer of other room members: {{ vm.numberOfOtherRoomMembers }}
+  <span
+  ng-repeat="member in vm._numberOfOtherRoomMembers() track by $index"
+  class="glyphicon glyphicon-user"
+  ></span>
+</p>
+
 <div ng-if="vm.currentUrl" class="mar-btm">
   <p>
     <button
