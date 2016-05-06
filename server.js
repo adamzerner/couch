@@ -42,12 +42,14 @@ io.sockets.on('connection', function (socket) {
 
   socket.on('leaveRoom', function (roomName) {
     socket.leave(roomName, function () {
-      // socket.removeListener('setVideoOnServer');
-      // socket.removeListener('playVideo');
-      // socket.removeListener('pauseVideo');
-      // socket.removeListener('skipTo');
+      socket.removeAllListeners('setVideoOnServer');
+      socket.removeAllListeners('playVideo');
+      socket.removeAllListeners('pauseVideo');
+      socket.removeAllListeners('skipTo');
     });
   });
 });
 
-server.listen(8000);
+server.listen(8000, function () {
+  console.log('Listening on port 8000...');
+});
