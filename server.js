@@ -4,6 +4,8 @@ var server = require('http').Server(app);
 var io = require('socket.io')(server);
 var pages;
 
+app.set('port', (process.env.PORT || 8000));
+
 // serve static assets
 app.use(express.static('assets'));
 
@@ -52,6 +54,6 @@ io.sockets.on('connection', function (socket) {
   });
 });
 
-server.listen(8000, function () {
-  console.log('Listening on port 8000...');
+server.listen(app.get('port'), function () {
+  console.log('Listening on port ' + app.get('port') + '...');
 });
