@@ -1,5 +1,5 @@
 angular
-  .module('couch', ['ui.router', 'youtube-embed', 'btford.socket-io', 'ui.bootstrap'])
+  .module('tatertot', ['ui.router', 'youtube-embed', 'btford.socket-io', 'ui.bootstrap'])
   .config(config)
   .run(run)
 ;

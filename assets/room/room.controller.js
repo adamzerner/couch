@@ -1,5 +1,5 @@
 angular
-  .module('couch')
+  .module('tatertot')
   .controller('RoomCtrl', RoomCtrl)
 ;
 
