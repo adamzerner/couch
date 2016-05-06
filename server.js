@@ -22,8 +22,10 @@ pages.forEach(function (page) {
 io.sockets.on('connection', function (socket) {
   socket.on('joinRoom', function (roomName) {
     socket.join(roomName, function () {
+      socket.broadcast.to(roomName).emit('joinedRoom');
+
       socket.on('setVideoOnServer', function (inputUrl) {
-        io.sockets.in(roomName).emit('setVideoOnClient', inputUrl); // can't broadcast(?)
+        io.sockets.in(roomName).emit('setVideoOnClient', inputUrl);
       });
 
       socket.on('playVideo', function () {

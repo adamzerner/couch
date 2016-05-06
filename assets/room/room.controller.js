@@ -3,11 +3,18 @@ angular
   .controller('RoomCtrl', RoomCtrl)
 ;
 
-function RoomCtrl($stateParams, Socket, $scope) {
+function RoomCtrl($stateParams, Socket, $scope, $rootScope) {
   var vm = this;
   vm.roomName = $stateParams.roomName;
 
   Socket.emit('joinRoom', vm.roomName);
+  Socket.on('joinedRoom', function () {
+    $rootScope.alert = {
+      message: 'Someone joined this room.',
+      type: 'info',
+      dismissOnTimeout: 2000,
+    };
+  });
 
   /* set video */
   vm.setVideo = function (inputUrl) {

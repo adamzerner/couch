@@ -19,6 +19,8 @@
     <script src="vendor/angular-socket-io.js"></script>
     <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
     <script src="/socket.io/socket.io.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/1.3.2/ui-bootstrap.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/1.3.2/ui-bootstrap-tpls.js"></script>
 
     <!-- code -->
     <script src="client.js"></script>
@@ -34,6 +36,16 @@
     <script src="services/Socket/Socket.factory.js"></script>
   </head>
   <body>
+    <uib-alert
+      ng-if="alert.message"
+      type="{{ alert.type }}"
+      close="closeAlert()"
+      dismiss-on-timeout="{{ alert.dismissOnTimeout }}"
+      class="uib-alert"
+    >
+      {{ alert.message }}
+    </uib-alert>
+
     <nav class="navbar navbar-default">
       <div class="container">
         <div class="navbar-header">
